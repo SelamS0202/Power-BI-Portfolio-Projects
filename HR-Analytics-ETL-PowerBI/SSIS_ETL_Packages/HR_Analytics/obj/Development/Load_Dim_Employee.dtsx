@@ -1,0 +1,2743 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/29/2025 9:43:11 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELAMPC"
+  DTS:CreatorName="SELAMPC\selam"
+  DTS:DTSID="{BF26D0BE-41E3-455E-BAA5-D18B9E3A3978}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Load_Dim_Employee"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{656BD607-70FD-4732-B579-4F3F9508BCEF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{422CD480-E7A8-46B5-9B00-23A0C49E763C}"
+      DTS:ObjectName="SELAMPC\SQLEXPRESS.HR_Analytics">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SELAMPC\SQLEXPRESS;Initial Catalog=HR_Analytics;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Load_Dim_Employee-{422CD480-E7A8-46B5-9B00-23A0C49E763C}SELAMPC\SQLEXPRESS.HR_Analytics;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{CA7C286B-8F61-4201-9791-08EFABDB0974}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Employee_Number Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Employee_Number Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Employee_Number Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Employee_Number Data Conversion.Inputs[Data Conversion Input].Columns[EmployeeNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeNumber"
+                      cachedSortKeyPosition="10"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeNumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Employee_Number Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EmployeeNumber]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Output].Columns[Copy of EmployeeNumber]"
+                      name="Copy of EmployeeNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeNumber]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Employee_Number Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert into Dim_Employee"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert into Dim_Employee"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Employee]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert into Dim_Employee.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+                  connectionManagerRefId="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Age"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[Attrition]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Attrition"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Attrition]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Attrition]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[BusinessTravel]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="BusinessTravel"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[BusinessTravel]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[BusinessTravel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[DistanceFromHome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DistanceFromHome"
+                      cachedSortKeyPosition="6"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromHome]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DistanceFromHome]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[Education]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Education"
+                      cachedSortKeyPosition="7"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Education]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[EducationField]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EducationField"
+                      cachedSortKeyPosition="8"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[EducationField]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EducationField]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[EmployeeNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeNumber"
+                      cachedSortKeyPosition="10"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeNumber]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeNumber]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[EnvironmentSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="EnvironmentSatisfaction"
+                      cachedSortKeyPosition="11"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[EnvironmentSatisfaction]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EnvironmentSatisfaction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Gender"
+                      cachedSortKeyPosition="12"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[JobInvolvement]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobInvolvement"
+                      cachedSortKeyPosition="14"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobInvolvement]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobInvolvement]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[JobLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobLevel"
+                      cachedSortKeyPosition="15"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobLevel]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobLevel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[JobRole]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="JobRole"
+                      cachedSortKeyPosition="16"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobRole]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobRole]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[JobSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="JobSatisfaction"
+                      cachedSortKeyPosition="17"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobSatisfaction]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobSatisfaction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="MaritalStatus"
+                      cachedSortKeyPosition="18"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[MonthlyIncome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MonthlyIncome"
+                      cachedSortKeyPosition="19"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyIncome]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MonthlyIncome]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[MonthlyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="MonthlyRate"
+                      cachedSortKeyPosition="20"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyRate]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MonthlyRate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[NumCompaniesWorked]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="NumCompaniesWorked"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[NumCompaniesWorked]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[NumCompaniesWorked]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[Over18]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Over18"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Over18]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Over18]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[OverTime]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OverTime"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[OverTime]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[OverTime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[RelationshipSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RelationshipSatisfaction"
+                      cachedSortKeyPosition="23"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[RelationshipSatisfaction]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[RelationshipSatisfaction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[StockOptionLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StockOptionLevel"
+                      cachedSortKeyPosition="25"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[StockOptionLevel]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[StockOptionLevel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[TotalWorkingYears]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TotalWorkingYears"
+                      cachedSortKeyPosition="26"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[TotalWorkingYears]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[TotalWorkingYears]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[TrainingTimesLastYear]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TrainingTimesLastYear"
+                      cachedSortKeyPosition="27"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[TrainingTimesLastYear]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[TrainingTimesLastYear]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[WorkLifeBalance]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WorkLifeBalance"
+                      cachedSortKeyPosition="28"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[WorkLifeBalance]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[WorkLifeBalance]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[YearsAtCompany]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsAtCompany"
+                      cachedSortKeyPosition="29"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsAtCompany]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsAtCompany]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[YearsInCurrentRole]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsInCurrentRole"
+                      cachedSortKeyPosition="30"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsInCurrentRole]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsInCurrentRole]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[YearsSinceLastPromotion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsSinceLastPromotion"
+                      cachedSortKeyPosition="31"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsSinceLastPromotion]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsSinceLastPromotion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].Columns[YearsWithCurrManager]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsWithCurrManager"
+                      cachedSortKeyPosition="32"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsWithCurrManager]"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsWithCurrManager]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeNumber]"
+                      dataType="i4"
+                      name="EmployeeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      dataType="wstr"
+                      length="50"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="30"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Attrition]"
+                      dataType="wstr"
+                      length="50"
+                      name="Attrition" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[BusinessTravel]"
+                      dataType="wstr"
+                      length="100"
+                      name="BusinessTravel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromHome]"
+                      dataType="wstr"
+                      length="50"
+                      name="DistanceFromHome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
+                      dataType="wstr"
+                      length="50"
+                      name="Education" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[EducationField]"
+                      dataType="wstr"
+                      length="50"
+                      name="EducationField" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      length="150"
+                      name="EnvironmentSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobInvolvement]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobInvolvement" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobRole]"
+                      dataType="wstr"
+                      length="150"
+                      name="JobRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[JobSatisfaction]"
+                      dataType="wstr"
+                      length="10"
+                      name="JobSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="20"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyIncome]"
+                      dataType="wstr"
+                      length="50"
+                      name="MonthlyIncome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyRate]"
+                      dataType="wstr"
+                      length="150"
+                      name="MonthlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      length="10"
+                      name="NumCompaniesWorked" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Over18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[OverTime]"
+                      dataType="wstr"
+                      length="30"
+                      name="OverTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      length="50"
+                      name="RelationshipSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[StockOptionLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="StockOptionLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[TotalWorkingYears]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalWorkingYears" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      length="50"
+                      name="TrainingTimesLastYear" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[WorkLifeBalance]"
+                      dataType="wstr"
+                      length="50"
+                      name="WorkLifeBalance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsAtCompany]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsAtCompany" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsInCurrentRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsSinceLastPromotion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input].ExternalColumns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsWithCurrManager" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert into Dim_Employee.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert into Dim_Employee.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert into Dim_Employee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert into Dim_Employee.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Read HR_Emp_Data Tabel"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Read HR_Emp_Data Tabel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[HR_Emp_Data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+                  connectionManagerRefId="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Age]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Age]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Age]"
+                      name="Age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Attrition]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Attrition]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Attrition]"
+                      name="Attrition"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[BusinessTravel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[BusinessTravel]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[BusinessTravel]"
+                      name="BusinessTravel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DailyRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[DailyRate]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DailyRate]"
+                      name="DailyRate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Department]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Department]"
+                      name="Department"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DistanceFromHome]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[DistanceFromHome]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DistanceFromHome]"
+                      name="DistanceFromHome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Education]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Education]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Education]"
+                      name="Education"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EducationField]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EducationField]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EducationField]"
+                      name="EducationField"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeCount]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EmployeeCount]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeCount]"
+                      name="EmployeeCount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EmployeeNumber]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeNumber]"
+                      name="EmployeeNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EnvironmentSatisfaction]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EnvironmentSatisfaction]"
+                      name="EnvironmentSatisfaction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[HourlyRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[HourlyRate]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[HourlyRate]"
+                      name="HourlyRate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobInvolvement]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobInvolvement]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobInvolvement]"
+                      name="JobInvolvement"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobLevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobLevel]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobLevel]"
+                      name="JobLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobRole]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobRole]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobRole]"
+                      name="JobRole"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobSatisfaction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobSatisfaction]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobSatisfaction]"
+                      name="JobSatisfaction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyIncome]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[MonthlyIncome]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyIncome]"
+                      name="MonthlyIncome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[MonthlyRate]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyRate]"
+                      name="MonthlyRate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[NumCompaniesWorked]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[NumCompaniesWorked]"
+                      name="NumCompaniesWorked"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Over18]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Over18]"
+                      name="Over18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[OverTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[OverTime]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[OverTime]"
+                      name="OverTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PercentSalaryHike]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[PercentSalaryHike]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PercentSalaryHike]"
+                      name="PercentSalaryHike"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PerformanceRating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[PerformanceRating]"
+                      length="350"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PerformanceRating]"
+                      name="PerformanceRating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[RelationshipSatisfaction]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[RelationshipSatisfaction]"
+                      name="RelationshipSatisfaction"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StandardHours]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[StandardHours]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StandardHours]"
+                      name="StandardHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StockOptionLevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[StockOptionLevel]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StockOptionLevel]"
+                      name="StockOptionLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TotalWorkingYears]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[TotalWorkingYears]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TotalWorkingYears]"
+                      name="TotalWorkingYears"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[TrainingTimesLastYear]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TrainingTimesLastYear]"
+                      name="TrainingTimesLastYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[WorkLifeBalance]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[WorkLifeBalance]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[WorkLifeBalance]"
+                      name="WorkLifeBalance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsAtCompany]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsAtCompany]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsAtCompany]"
+                      name="YearsAtCompany"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsInCurrentRole]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsInCurrentRole]"
+                      name="YearsInCurrentRole"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsSinceLastPromotion]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsSinceLastPromotion]"
+                      name="YearsSinceLastPromotion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsWithCurrManager]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsWithCurrManager]"
+                      name="YearsWithCurrManager"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Age]"
+                      dataType="wstr"
+                      length="50"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Attrition]"
+                      dataType="wstr"
+                      length="50"
+                      name="Attrition" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[BusinessTravel]"
+                      dataType="wstr"
+                      length="100"
+                      name="BusinessTravel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[DailyRate]"
+                      dataType="wstr"
+                      length="50"
+                      name="DailyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                      dataType="wstr"
+                      length="100"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[DistanceFromHome]"
+                      dataType="wstr"
+                      length="50"
+                      name="DistanceFromHome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Education]"
+                      dataType="wstr"
+                      length="50"
+                      name="Education" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EducationField]"
+                      dataType="wstr"
+                      length="50"
+                      name="EducationField" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EmployeeCount]"
+                      dataType="wstr"
+                      length="10"
+                      name="EmployeeCount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EmployeeNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      length="150"
+                      name="EnvironmentSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="30"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[HourlyRate]"
+                      dataType="wstr"
+                      length="30"
+                      name="HourlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobInvolvement]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobInvolvement" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobRole]"
+                      dataType="wstr"
+                      length="150"
+                      name="JobRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[JobSatisfaction]"
+                      dataType="wstr"
+                      length="10"
+                      name="JobSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="20"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[MonthlyIncome]"
+                      dataType="wstr"
+                      length="50"
+                      name="MonthlyIncome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[MonthlyRate]"
+                      dataType="wstr"
+                      length="150"
+                      name="MonthlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      length="10"
+                      name="NumCompaniesWorked" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Over18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[OverTime]"
+                      dataType="wstr"
+                      length="30"
+                      name="OverTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[PercentSalaryHike]"
+                      dataType="wstr"
+                      length="150"
+                      name="PercentSalaryHike" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[PerformanceRating]"
+                      dataType="wstr"
+                      length="350"
+                      name="PerformanceRating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      length="50"
+                      name="RelationshipSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[StandardHours]"
+                      dataType="wstr"
+                      length="50"
+                      name="StandardHours" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[StockOptionLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="StockOptionLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[TotalWorkingYears]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalWorkingYears" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      length="50"
+                      name="TrainingTimesLastYear" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[WorkLifeBalance]"
+                      dataType="wstr"
+                      length="50"
+                      name="WorkLifeBalance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsAtCompany]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsAtCompany" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsInCurrentRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsSinceLastPromotion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].ExternalColumns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsWithCurrManager" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Age]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Age]"
+                      name="Age" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Attrition]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Attrition]"
+                      name="Attrition" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[BusinessTravel]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[BusinessTravel]"
+                      name="BusinessTravel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[DailyRate]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[DailyRate]"
+                      name="DailyRate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Department]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Department]"
+                      name="Department" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[DistanceFromHome]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[DistanceFromHome]"
+                      name="DistanceFromHome" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Education]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Education]"
+                      name="Education" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EducationField]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EducationField]"
+                      name="EducationField" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EmployeeCount]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EmployeeCount]"
+                      name="EmployeeCount" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EmployeeNumber]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EmployeeNumber]"
+                      name="EmployeeNumber" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[EnvironmentSatisfaction]"
+                      name="EnvironmentSatisfaction" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[HourlyRate]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[HourlyRate]"
+                      name="HourlyRate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobInvolvement]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobInvolvement]"
+                      name="JobInvolvement" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobLevel]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobLevel]"
+                      name="JobLevel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobRole]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobRole]"
+                      name="JobRole" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobSatisfaction]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[JobSatisfaction]"
+                      name="JobSatisfaction" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[MonthlyIncome]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[MonthlyIncome]"
+                      name="MonthlyIncome" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[MonthlyRate]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[MonthlyRate]"
+                      name="MonthlyRate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[NumCompaniesWorked]"
+                      name="NumCompaniesWorked" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[Over18]"
+                      name="Over18" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[OverTime]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[OverTime]"
+                      name="OverTime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[PercentSalaryHike]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[PercentSalaryHike]"
+                      name="PercentSalaryHike" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[PerformanceRating]"
+                      dataType="wstr"
+                      length="350"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[PerformanceRating]"
+                      name="PerformanceRating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[RelationshipSatisfaction]"
+                      name="RelationshipSatisfaction" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[StandardHours]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[StandardHours]"
+                      name="StandardHours" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[StockOptionLevel]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[StockOptionLevel]"
+                      name="StockOptionLevel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[TotalWorkingYears]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[TotalWorkingYears]"
+                      name="TotalWorkingYears" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[TrainingTimesLastYear]"
+                      name="TrainingTimesLastYear" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[WorkLifeBalance]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[WorkLifeBalance]"
+                      name="WorkLifeBalance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsAtCompany]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsAtCompany]"
+                      name="YearsAtCompany" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsInCurrentRole]"
+                      name="YearsInCurrentRole" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsSinceLastPromotion]"
+                      name="YearsSinceLastPromotion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[YearsWithCurrManager]"
+                      name="YearsWithCurrManager" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Age]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Age"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Age]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Attrition]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Attrition"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Attrition]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[BusinessTravel]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="BusinessTravel"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[BusinessTravel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[DailyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DailyRate"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DailyRate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Department]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Department"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Department]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[DistanceFromHome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DistanceFromHome"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DistanceFromHome]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Education]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Education"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Education]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">7</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[EducationField]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EducationField"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EducationField]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">8</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[EmployeeCount]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="EmployeeCount"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeCount]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">9</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[EmployeeNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeNumber"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">10</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[EnvironmentSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="EnvironmentSatisfaction"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EnvironmentSatisfaction]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">11</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Gender"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">12</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[HourlyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="HourlyRate"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[HourlyRate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">13</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[JobInvolvement]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobInvolvement"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobInvolvement]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">14</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[JobLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobLevel"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">15</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[JobRole]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="JobRole"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobRole]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">16</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[JobSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="JobSatisfaction"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobSatisfaction]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">17</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">18</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[MonthlyIncome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MonthlyIncome"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyIncome]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">19</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[MonthlyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="MonthlyRate"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyRate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">20</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[NumCompaniesWorked]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="NumCompaniesWorked"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[NumCompaniesWorked]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[Over18]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Over18"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Over18]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[OverTime]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OverTime"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[OverTime]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[PercentSalaryHike]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="PercentSalaryHike"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PercentSalaryHike]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">21</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[PerformanceRating]"
+                      cachedDataType="wstr"
+                      cachedLength="350"
+                      cachedName="PerformanceRating"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PerformanceRating]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">22</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[RelationshipSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RelationshipSatisfaction"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[RelationshipSatisfaction]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">23</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[StandardHours]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StandardHours"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StandardHours]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">24</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[StockOptionLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StockOptionLevel"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StockOptionLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">25</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[TotalWorkingYears]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TotalWorkingYears"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TotalWorkingYears]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">26</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[TrainingTimesLastYear]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TrainingTimesLastYear"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TrainingTimesLastYear]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">27</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[WorkLifeBalance]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WorkLifeBalance"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[WorkLifeBalance]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">28</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[YearsAtCompany]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsAtCompany"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsAtCompany]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">29</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[YearsInCurrentRole]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsInCurrentRole"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsInCurrentRole]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">30</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[YearsSinceLastPromotion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsSinceLastPromotion"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsSinceLastPromotion]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">31</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[YearsWithCurrManager]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsWithCurrManager"
+                      lineageId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsWithCurrManager]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">32</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Age]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Age]"
+                      name="Age"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Age]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Attrition]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Attrition]"
+                      name="Attrition"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Attrition]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[BusinessTravel]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[BusinessTravel]"
+                      name="BusinessTravel"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[BusinessTravel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DailyRate]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DailyRate]"
+                      name="DailyRate"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DailyRate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Department]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Department]"
+                      name="Department"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Department]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DistanceFromHome]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DistanceFromHome]"
+                      name="DistanceFromHome"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[DistanceFromHome]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Education]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Education]"
+                      name="Education"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Education]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EducationField]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EducationField]"
+                      name="EducationField"
+                      sortKeyPosition="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EducationField]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeCount]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeCount]"
+                      name="EmployeeCount"
+                      sortKeyPosition="9">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeCount]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeNumber]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EmployeeNumber]"
+                      name="EmployeeNumber"
+                      sortKeyPosition="10">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EmployeeNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[EnvironmentSatisfaction]"
+                      name="EnvironmentSatisfaction"
+                      sortKeyPosition="11">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[EnvironmentSatisfaction]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Gender]"
+                      name="Gender"
+                      sortKeyPosition="12">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[HourlyRate]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[HourlyRate]"
+                      name="HourlyRate"
+                      sortKeyPosition="13">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[HourlyRate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobInvolvement]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobInvolvement]"
+                      name="JobInvolvement"
+                      sortKeyPosition="14">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobInvolvement]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobLevel]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobLevel]"
+                      name="JobLevel"
+                      sortKeyPosition="15">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobRole]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobRole]"
+                      name="JobRole"
+                      sortKeyPosition="16">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobRole]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobSatisfaction]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[JobSatisfaction]"
+                      name="JobSatisfaction"
+                      sortKeyPosition="17">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[JobSatisfaction]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      sortKeyPosition="18">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MonthlyIncome]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MonthlyIncome]"
+                      name="MonthlyIncome"
+                      sortKeyPosition="19">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyIncome]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MonthlyRate]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[MonthlyRate]"
+                      name="MonthlyRate"
+                      sortKeyPosition="20">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[MonthlyRate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[NumCompaniesWorked]"
+                      name="NumCompaniesWorked">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[NumCompaniesWorked]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[Over18]"
+                      name="Over18">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[Over18]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[OverTime]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[OverTime]"
+                      name="OverTime">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[OverTime]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[PercentSalaryHike]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[PercentSalaryHike]"
+                      name="PercentSalaryHike"
+                      sortKeyPosition="21">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PercentSalaryHike]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[PerformanceRating]"
+                      dataType="wstr"
+                      length="350"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[PerformanceRating]"
+                      name="PerformanceRating"
+                      sortKeyPosition="22">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[PerformanceRating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[RelationshipSatisfaction]"
+                      name="RelationshipSatisfaction"
+                      sortKeyPosition="23">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[RelationshipSatisfaction]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[StandardHours]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[StandardHours]"
+                      name="StandardHours"
+                      sortKeyPosition="24">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StandardHours]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[StockOptionLevel]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[StockOptionLevel]"
+                      name="StockOptionLevel"
+                      sortKeyPosition="25">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[StockOptionLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[TotalWorkingYears]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[TotalWorkingYears]"
+                      name="TotalWorkingYears"
+                      sortKeyPosition="26">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TotalWorkingYears]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[TrainingTimesLastYear]"
+                      name="TrainingTimesLastYear"
+                      sortKeyPosition="27">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[TrainingTimesLastYear]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[WorkLifeBalance]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[WorkLifeBalance]"
+                      name="WorkLifeBalance"
+                      sortKeyPosition="28">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[WorkLifeBalance]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsAtCompany]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsAtCompany]"
+                      name="YearsAtCompany"
+                      sortKeyPosition="29">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsAtCompany]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsInCurrentRole]"
+                      name="YearsInCurrentRole"
+                      sortKeyPosition="30">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsInCurrentRole]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsSinceLastPromotion]"
+                      name="YearsSinceLastPromotion"
+                      sortKeyPosition="31">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsSinceLastPromotion]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[YearsWithCurrManager]"
+                      name="YearsWithCurrManager"
+                      sortKeyPosition="32">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output].Columns[YearsWithCurrManager]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Insert into Dim_Employee.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Employee_Number Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Read HR_Emp_Data Tabel.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Employee_Number Data Conversion.Inputs[Data Conversion Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="120.833326731291,108.333332579997" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Data Flow Task\Insert into Dim_Employee"
+          TopLeft="432.499976369243,251.333331585593" />
+        <NodeLayout
+          Size="247.2,41.6"
+          Id="Package\Data Flow Task\Employee_Number Data Conversion"
+          TopLeft="244.166653325989,117.866665847036" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Data Flow Task\Read HR_Emp_Data Tabel"
+          TopLeft="34.9999980876844,25.9999998191992" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="88.333328507013,120.466665828957" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="185.933328507013,139.966665837997">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.2333248189759,0"
+              Start="0,0"
+              End="50.7333248189759,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.7333248189759,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="137.266663297349,67.5999998191992">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.8666660097573"
+              Start="0,0"
+              End="0,45.3666660097573">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.3666660097573" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="367.766653325989,159.466665847036">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163.533323043254,91.866665738557"
+              Start="0,0"
+              End="163.533323043254,84.366665738557">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.9333328692785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.9333328692785"
+                    Point2="0,45.9333328692785"
+                    Point3="4,45.9333328692785" />
+                  <mssgle:LineSegment
+                    End="159.533323043254,45.9333328692785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="159.533323043254,45.9333328692785"
+                    Point2="163.533323043254,45.9333328692785"
+                    Point3="163.533323043254,49.9333328692785" />
+                  <mssgle:LineSegment
+                    End="163.533323043254,84.366665738557" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert into Dim_Employee">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Read HR_Emp_Data Tabel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

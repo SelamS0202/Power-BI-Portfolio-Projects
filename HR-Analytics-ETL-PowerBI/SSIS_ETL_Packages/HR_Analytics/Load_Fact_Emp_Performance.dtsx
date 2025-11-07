@@ -1,0 +1,72 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/4/2025 9:03:35 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELAMPC"
+  DTS:CreatorName="SELAMPC\selam"
+  DTS:DTSID="{719C4F6D-2405-4B32-A361-514F51452336}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{6E54B7FC-7297-4281-BB9E-EB73D5213B5B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{85284AB0-42E7-4EC5-8B30-5FF154A58FAA}"
+      DTS:ObjectName="SELAMPC\SQLEXPRESS.HR_Analytics">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=YOUR_SERVER;Initial Catalog=HR_Analytics;User ID=sa;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Load Fact_Emp_Performance Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{61EFD350-A8CB-4ABB-9902-D831DD5338BA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Load Fact_Emp_Performance Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{85284AB0-42E7-4EC5-8B30-5FF154A58FAA}"
+          SQLTask:SqlStatementSource="INSERT INTO [HR_Analytics].[dbo].[Fact_Emp_Performance]&#xA;       (EmployeeNumber,&#xA;        DepartmentID,&#xA;        PerformanceRating,&#xA;        YearsSinceLastPromotion,&#xA;        YearsInCurrentRole,&#xA;        YearsWithCurrManager)&#xA;SELECT  &#xA;       HR_Emp.EmployeeNumber,&#xA;       Dim_Dept.DepartmentID,&#xA;       HR_Emp.PerformanceRating,&#xA;       HR_Emp.YearsSinceLastPromotion,&#xA;       HR_Emp.YearsInCurrentRole,&#xA;       HR_Emp.YearsWithCurrManager&#xA;FROM [HR_Analytics].[dbo].[HR_Emp_Data] AS HR_Emp&#xA;INNER JOIN [HR_Analytics].[dbo].[Dim_Department] AS Dim_Dept&#xA;    ON HR_Emp.Department = Dim_Dept.Department&#xA;LEFT JOIN [HR_Analytics].[dbo].[Fact_Emp_Performance] AS Fact_Per&#xA;    ON HR_Emp.EmployeeNumber = Fact_Per.EmployeeNumber&#xA;   AND Dim_Dept.DepartmentID = Fact_Per.DepartmentID&#xA;WHERE Fact_Per.EmployeeNumber IS NULL;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="309.6,41.6"
+          Id="Package\Execute SQL Load Fact_Emp_Performance Table"
+          TopLeft="81.6666622045969,107.466665919357" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

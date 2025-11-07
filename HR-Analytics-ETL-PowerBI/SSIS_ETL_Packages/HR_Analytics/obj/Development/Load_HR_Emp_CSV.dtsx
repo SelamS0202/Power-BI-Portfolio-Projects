@@ -1,0 +1,2315 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/29/2025 8:37:51 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SELAMPC"
+  DTS:CreatorName="SELAMPC\selam"
+  DTS:DTSID="{D9E28D7C-D3B6-4F82-9F89-47DE68DB59B9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5228.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Load_HR_Emp_CSV"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{6DBA0DBA-4719-4875-8036-35E6F2A25082}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HR_Analytics_CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5852EDAF-6F9B-4C6F-B996-E09BBF1D406E}"
+      DTS:ObjectName="HR_Analytics_CSV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\selam\OneDrive\Desktop\PortfolioProjects\HR Analytics\Data\WA_HR_Employee_Attrition.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Age"
+              DTS:DTSID="{9F75336D-BBF5-47EC-A9E7-39821D536C85}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Attrition"
+              DTS:DTSID="{302FBD7F-7FA2-471E-8083-7B06EA33D68B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BusinessTravel"
+              DTS:DTSID="{7888C1B4-962F-4A2B-B6DB-FB1AD41BA404}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DailyRate"
+              DTS:DTSID="{A177CA90-0F2D-4405-979E-A99F1DF9A977}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Department"
+              DTS:DTSID="{6643FDF2-AE72-423F-905A-75C0AF76E85C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DistanceFromHome"
+              DTS:DTSID="{8020BC06-1E25-4C12-BF7C-9B053FE5554B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Education"
+              DTS:DTSID="{98A1F82F-38E6-411C-9E38-6100E7EFEDCE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EducationField"
+              DTS:DTSID="{AFE79614-8721-4633-AFF9-E8E9E5B83304}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeCount"
+              DTS:DTSID="{9E58B41C-5607-495E-A3BD-1D0E7459CD69}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeNumber"
+              DTS:DTSID="{A0CC312C-511C-49E2-BE2B-BAF8AF2E385D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EnvironmentSatisfaction"
+              DTS:DTSID="{A8EC2E5D-9C97-428D-82AC-AB0274CF3A51}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{EF7F4151-823C-44D6-BA1C-A8F8BDD3A113}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HourlyRate"
+              DTS:DTSID="{7F6CE0A0-A5C8-43DA-AF5E-9C1284D9E36A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobInvolvement"
+              DTS:DTSID="{E2582B1E-B1FB-45AC-AFDF-99CC0595F0CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobLevel"
+              DTS:DTSID="{A54C9328-554F-4685-8411-D1A425466C09}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobRole"
+              DTS:DTSID="{32FED49A-2D89-4119-B958-4C6689289A89}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobSatisfaction"
+              DTS:DTSID="{0E58E7F0-6F3A-41D6-B0D7-F6E4D514DFBF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MaritalStatus"
+              DTS:DTSID="{9F0EFC1D-B744-46ED-9DDE-B53AF877B1A4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthlyIncome"
+              DTS:DTSID="{DA3E7639-B0D6-4FA1-8282-A3B5719C0398}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthlyRate"
+              DTS:DTSID="{7102C17E-8FF0-4BE3-87F9-CD38A761FECE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NumCompaniesWorked"
+              DTS:DTSID="{83B3D665-3E53-42C4-922E-0AD76EFAAA1B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Over18"
+              DTS:DTSID="{783D161A-9AF4-4297-908D-6C15A20291F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OverTime"
+              DTS:DTSID="{4A2381C7-2C65-4052-A68B-D58C67959D8A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="150"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PercentSalaryHike"
+              DTS:DTSID="{65B3C404-3457-48AB-B7EE-5A0F2AEAA70E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="350"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PerformanceRating"
+              DTS:DTSID="{28D607ED-A12F-442D-8B61-A9CCEC571316}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RelationshipSatisfaction"
+              DTS:DTSID="{1709622B-DD9E-4279-9E95-98AF71FC1D62}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StandardHours"
+              DTS:DTSID="{75956097-4451-4C6D-ABDF-4744330277C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StockOptionLevel"
+              DTS:DTSID="{B4886EFE-5B4C-4DB2-B8D5-BF242BA78539}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalWorkingYears"
+              DTS:DTSID="{1E1799F4-23F3-47DF-9C05-8B687EFC2FE4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TrainingTimesLastYear"
+              DTS:DTSID="{DA6B147C-12FE-4EDC-973B-2BF323B92DB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WorkLifeBalance"
+              DTS:DTSID="{7C905A12-43D1-43F4-A85E-EDD4B80113AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsAtCompany"
+              DTS:DTSID="{8658D3F4-43F9-4356-A667-5D7C31BB9C5A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsInCurrentRole"
+              DTS:DTSID="{5A1C89E8-2F29-419B-8B20-E99DD45947EA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsSinceLastPromotion"
+              DTS:DTSID="{0E25162C-B562-4291-A2AE-47ED6336314C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsWithCurrManager"
+              DTS:DTSID="{05574D4A-C32C-49C4-8AA5-282EE380E8AC}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HR_Data_Test]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{660E3588-F9BA-4D48-B8DE-0F4117C05A15}"
+      DTS:ObjectName="HR_Data_Test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\selam\OneDrive\Desktop\PortfolioProjects\HR Analytics\Data\HR_Test.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Age"
+              DTS:DTSID="{45B4D130-A8F6-4532-B24B-95335D990374}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Attrition"
+              DTS:DTSID="{DDEF5132-B0D2-4BA3-86E7-900568840C4E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BusinessTravel"
+              DTS:DTSID="{B575AEED-9AFA-4394-8A58-06CCA8939600}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DailyRate"
+              DTS:DTSID="{163CC50D-E5E4-499F-A117-3ADB096E2342}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Department"
+              DTS:DTSID="{498E43EB-6696-49C7-9873-7F38B3B6CEAB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DistanceFromHome"
+              DTS:DTSID="{10FAB05A-A85B-4808-A7DC-61F3D2239457}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Education"
+              DTS:DTSID="{52A4F856-D29D-4618-9AD9-B50BBD51F6D3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EducationField"
+              DTS:DTSID="{B5DCACEC-F55D-4A8B-841C-BC615C95FAC4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeCount"
+              DTS:DTSID="{DEEBA77F-BA92-49BC-8B22-4D3958F2B4A1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EmployeeNumber"
+              DTS:DTSID="{E409DE2B-AC5A-4A09-8250-4F16AC5C1412}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EnvironmentSatisfaction"
+              DTS:DTSID="{A6E3BD7E-9CF4-4476-93D3-A34D34375F9C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gender"
+              DTS:DTSID="{E6C939D7-BBE1-4888-8517-D54B0B61EDDB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HourlyRate"
+              DTS:DTSID="{A368216C-EF72-4BEE-83AC-D5EFFB43DF74}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobInvolvement"
+              DTS:DTSID="{EBB9EFBC-2E88-4D4C-9B1B-D44D5C908C2E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobLevel"
+              DTS:DTSID="{DD20F504-7562-48CE-A378-5782010D4D2D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobRole"
+              DTS:DTSID="{33C1AADF-E4F5-422D-9463-E9D348C21F7B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="JobSatisfaction"
+              DTS:DTSID="{C266D817-A547-4E5E-B946-089AD5930B04}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MaritalStatus"
+              DTS:DTSID="{39CD4D1E-3C1A-4E79-8A6E-315BFDD0F00B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthlyIncome"
+              DTS:DTSID="{75E62EAD-B10E-417A-9166-94BB402A853B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthlyRate"
+              DTS:DTSID="{D62DC24F-D39F-44B8-8BEE-AFF486FEF8C6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NumCompaniesWorked"
+              DTS:DTSID="{6A1D3BBF-9185-43D9-9AF4-69A5706385DF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Over18"
+              DTS:DTSID="{1A805EB5-C62D-4819-8587-635E27DF0F2F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OverTime"
+              DTS:DTSID="{62232F3D-A225-4101-A863-F51DB8F7CDAA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PercentSalaryHike"
+              DTS:DTSID="{E564ADC9-0464-430A-A802-BB1CF1E0FB65}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PerformanceRating"
+              DTS:DTSID="{804623AB-93F4-4AD3-98EC-E6BE72008A61}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RelationshipSatisfaction"
+              DTS:DTSID="{4361CAD6-587C-45B2-AD49-A10B2A404082}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StandardHours"
+              DTS:DTSID="{E708C3A5-FBC1-4F47-9360-546CD316A1D7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StockOptionLevel"
+              DTS:DTSID="{DBAA3875-BD63-4E48-A43F-2902AD5E4CBE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalWorkingYears"
+              DTS:DTSID="{9E91F8D0-39FB-4ED1-82D9-8FA48994EC4D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TrainingTimesLastYear"
+              DTS:DTSID="{15260B9F-3FBB-4AA2-9CCD-7F351B4CF058}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WorkLifeBalance"
+              DTS:DTSID="{10442A53-C56C-4B23-9A79-19FAD8545DD1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsAtCompany"
+              DTS:DTSID="{3D364AA7-A071-4ABA-AA3B-B9B583CEF5F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsInCurrentRole"
+              DTS:DTSID="{1638C887-A059-4F54-A56A-F5FA6BF62556}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsSinceLastPromotion"
+              DTS:DTSID="{CEBABE4D-0ED6-4736-93D4-30737A952CED}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearsWithCurrManager"
+              DTS:DTSID="{CDD7D02C-9764-4B70-9151-02A979DD6CEC}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5501CBA0-92E4-4A1B-954F-1316B6AC5F2D}"
+      DTS:ObjectName="SELAMPC\SQLEXPRESS.HR_Analytics">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SELAMPC\SQLEXPRESS;Initial Catalog=HR_Analytics;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{5501CBA0-92E4-4A1B-954F-1316B6AC5F2D}SELAMPC\SQLEXPRESS.HR_Analytics;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E8ADB787-0972-4942-959C-270DD7EC32BD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Copy HR_Data CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Copy HR_Data CSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Copy HR_Data CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HR_Analytics_CSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[HR_Analytics_CSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Age]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Age]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Age]"
+                      name="Age"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Attrition]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Attrition]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Attrition]"
+                      name="Attrition"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[BusinessTravel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[BusinessTravel]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[BusinessTravel]"
+                      name="BusinessTravel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[DailyRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[DailyRate]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[DailyRate]"
+                      name="DailyRate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Department]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Department]"
+                      name="Department"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[DistanceFromHome]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[DistanceFromHome]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[DistanceFromHome]"
+                      name="DistanceFromHome"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Education]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Education]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Education]"
+                      name="Education"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EducationField]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EducationField]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EducationField]"
+                      name="EducationField"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EmployeeCount]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EmployeeCount]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EmployeeCount]"
+                      name="EmployeeCount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EmployeeNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EmployeeNumber]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EmployeeNumber]"
+                      name="EmployeeNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EnvironmentSatisfaction]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EnvironmentSatisfaction]"
+                      name="EnvironmentSatisfaction"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[HourlyRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[HourlyRate]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[HourlyRate]"
+                      name="HourlyRate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobInvolvement]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobInvolvement]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobInvolvement]"
+                      name="JobInvolvement"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobLevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobLevel]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobLevel]"
+                      name="JobLevel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobRole]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobRole]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobRole]"
+                      name="JobRole"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobSatisfaction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobSatisfaction]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobSatisfaction]"
+                      name="JobSatisfaction"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatus]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MonthlyIncome]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[MonthlyIncome]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MonthlyIncome]"
+                      name="MonthlyIncome"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MonthlyRate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[MonthlyRate]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MonthlyRate]"
+                      name="MonthlyRate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[NumCompaniesWorked]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[NumCompaniesWorked]"
+                      name="NumCompaniesWorked"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Over18]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Over18]"
+                      name="Over18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[OverTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[OverTime]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[OverTime]"
+                      name="OverTime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[PercentSalaryHike]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[PercentSalaryHike]"
+                      length="150"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[PercentSalaryHike]"
+                      name="PercentSalaryHike"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[PerformanceRating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceRating]"
+                      length="350"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[PerformanceRating]"
+                      name="PerformanceRating"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[RelationshipSatisfaction]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[RelationshipSatisfaction]"
+                      name="RelationshipSatisfaction"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[StandardHours]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[StandardHours]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[StandardHours]"
+                      name="StandardHours"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[StockOptionLevel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[StockOptionLevel]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[StockOptionLevel]"
+                      name="StockOptionLevel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[TotalWorkingYears]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[TotalWorkingYears]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[TotalWorkingYears]"
+                      name="TotalWorkingYears"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[TrainingTimesLastYear]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[TrainingTimesLastYear]"
+                      name="TrainingTimesLastYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[WorkLifeBalance]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[WorkLifeBalance]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[WorkLifeBalance]"
+                      name="WorkLifeBalance"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsAtCompany]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsAtCompany]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsAtCompany]"
+                      name="YearsAtCompany"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsInCurrentRole]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsInCurrentRole]"
+                      name="YearsInCurrentRole"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsSinceLastPromotion]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsSinceLastPromotion]"
+                      name="YearsSinceLastPromotion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsWithCurrManager]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsWithCurrManager]"
+                      name="YearsWithCurrManager"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Age]"
+                      dataType="wstr"
+                      length="50"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Attrition]"
+                      dataType="wstr"
+                      length="50"
+                      name="Attrition" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[BusinessTravel]"
+                      dataType="wstr"
+                      length="50"
+                      name="BusinessTravel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[DailyRate]"
+                      dataType="wstr"
+                      length="50"
+                      name="DailyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Department]"
+                      dataType="wstr"
+                      length="50"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[DistanceFromHome]"
+                      dataType="wstr"
+                      length="50"
+                      name="DistanceFromHome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Education]"
+                      dataType="wstr"
+                      length="50"
+                      name="Education" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EducationField]"
+                      dataType="wstr"
+                      length="50"
+                      name="EducationField" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EmployeeCount]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeCount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EmployeeNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      length="150"
+                      name="EnvironmentSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="30"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[HourlyRate]"
+                      dataType="wstr"
+                      length="30"
+                      name="HourlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobInvolvement]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobInvolvement" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobRole]"
+                      dataType="wstr"
+                      length="150"
+                      name="JobRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[JobSatisfaction]"
+                      dataType="wstr"
+                      length="10"
+                      name="JobSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="20"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[MonthlyIncome]"
+                      dataType="wstr"
+                      length="50"
+                      name="MonthlyIncome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[MonthlyRate]"
+                      dataType="wstr"
+                      length="150"
+                      name="MonthlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      length="10"
+                      name="NumCompaniesWorked" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Over18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[OverTime]"
+                      dataType="wstr"
+                      length="30"
+                      name="OverTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[PercentSalaryHike]"
+                      dataType="wstr"
+                      length="150"
+                      name="PercentSalaryHike" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[PerformanceRating]"
+                      dataType="wstr"
+                      length="350"
+                      name="PerformanceRating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      length="50"
+                      name="RelationshipSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[StandardHours]"
+                      dataType="wstr"
+                      length="50"
+                      name="StandardHours" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[StockOptionLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="StockOptionLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[TotalWorkingYears]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalWorkingYears" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      length="50"
+                      name="TrainingTimesLastYear" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[WorkLifeBalance]"
+                      dataType="wstr"
+                      length="50"
+                      name="WorkLifeBalance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsAtCompany]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsAtCompany" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsInCurrentRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsSinceLastPromotion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].ExternalColumns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsWithCurrManager" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\HR_Emp_Data Tabel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="HR_Emp_Data Tabel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[HR_Emp_Data]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\HR_Emp_Data Tabel.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+                  connectionManagerRefId="Package.ConnectionManagers[SELAMPC\SQLEXPRESS.HR_Analytics]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[Attrition]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Attrition"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Attrition]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Attrition]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[BusinessTravel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BusinessTravel"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[BusinessTravel]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[BusinessTravel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[DailyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DailyRate"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[DailyRate]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[DailyRate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[Department]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Department"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Department]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[DistanceFromHome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DistanceFromHome"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromHome]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[DistanceFromHome]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[Education]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Education"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Education]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[EducationField]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EducationField"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EducationField]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EducationField]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[EmployeeCount]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeCount"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeCount]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EmployeeCount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[EmployeeNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EmployeeNumber"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeNumber]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EmployeeNumber]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[EnvironmentSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="EnvironmentSatisfaction"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EnvironmentSatisfaction]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[EnvironmentSatisfaction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[HourlyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="HourlyRate"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[HourlyRate]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[HourlyRate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[JobInvolvement]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobInvolvement"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobInvolvement]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobInvolvement]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[JobLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobLevel"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobLevel]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobLevel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[JobRole]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="JobRole"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobRole]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobRole]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[JobSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="JobSatisfaction"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobSatisfaction]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[JobSatisfaction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="MaritalStatus"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MaritalStatus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[MonthlyIncome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MonthlyIncome"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyIncome]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MonthlyIncome]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[MonthlyRate]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="MonthlyRate"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyRate]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[MonthlyRate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[NumCompaniesWorked]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="NumCompaniesWorked"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[NumCompaniesWorked]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[NumCompaniesWorked]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[OverTime]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OverTime"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[OverTime]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[OverTime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[PercentSalaryHike]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="PercentSalaryHike"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[PercentSalaryHike]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[PercentSalaryHike]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[PerformanceRating]"
+                      cachedDataType="wstr"
+                      cachedLength="350"
+                      cachedName="PerformanceRating"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[PerformanceRating]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[PerformanceRating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[RelationshipSatisfaction]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RelationshipSatisfaction"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[RelationshipSatisfaction]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[RelationshipSatisfaction]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[StandardHours]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StandardHours"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[StandardHours]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[StandardHours]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[StockOptionLevel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StockOptionLevel"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[StockOptionLevel]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[StockOptionLevel]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[TotalWorkingYears]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TotalWorkingYears"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[TotalWorkingYears]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[TotalWorkingYears]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[TrainingTimesLastYear]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TrainingTimesLastYear"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[TrainingTimesLastYear]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[TrainingTimesLastYear]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[WorkLifeBalance]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="WorkLifeBalance"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[WorkLifeBalance]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[WorkLifeBalance]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[YearsAtCompany]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsAtCompany"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsAtCompany]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsAtCompany]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[YearsInCurrentRole]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsInCurrentRole"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsInCurrentRole]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsInCurrentRole]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[YearsSinceLastPromotion]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsSinceLastPromotion"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsSinceLastPromotion]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsSinceLastPromotion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[YearsWithCurrManager]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="YearsWithCurrManager"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsWithCurrManager]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[YearsWithCurrManager]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].Columns[Over18]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Over18"
+                      externalMetadataColumnId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Over18]"
+                      lineageId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output].Columns[Over18]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      dataType="wstr"
+                      length="50"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Attrition]"
+                      dataType="wstr"
+                      length="50"
+                      name="Attrition" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[BusinessTravel]"
+                      dataType="wstr"
+                      length="100"
+                      name="BusinessTravel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[DailyRate]"
+                      dataType="wstr"
+                      length="50"
+                      name="DailyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                      dataType="wstr"
+                      length="100"
+                      name="Department" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[DistanceFromHome]"
+                      dataType="wstr"
+                      length="50"
+                      name="DistanceFromHome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
+                      dataType="wstr"
+                      length="50"
+                      name="Education" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EducationField]"
+                      dataType="wstr"
+                      length="50"
+                      name="EducationField" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeCount]"
+                      dataType="wstr"
+                      length="10"
+                      name="EmployeeCount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="EmployeeNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[EnvironmentSatisfaction]"
+                      dataType="wstr"
+                      length="150"
+                      name="EnvironmentSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="30"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[HourlyRate]"
+                      dataType="wstr"
+                      length="30"
+                      name="HourlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobInvolvement]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobInvolvement" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobRole]"
+                      dataType="wstr"
+                      length="150"
+                      name="JobRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[JobSatisfaction]"
+                      dataType="wstr"
+                      length="10"
+                      name="JobSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="20"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyIncome]"
+                      dataType="wstr"
+                      length="50"
+                      name="MonthlyIncome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[MonthlyRate]"
+                      dataType="wstr"
+                      length="150"
+                      name="MonthlyRate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[NumCompaniesWorked]"
+                      dataType="wstr"
+                      length="10"
+                      name="NumCompaniesWorked" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[Over18]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Over18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[OverTime]"
+                      dataType="wstr"
+                      length="30"
+                      name="OverTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[PercentSalaryHike]"
+                      dataType="wstr"
+                      length="150"
+                      name="PercentSalaryHike" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[PerformanceRating]"
+                      dataType="wstr"
+                      length="350"
+                      name="PerformanceRating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[RelationshipSatisfaction]"
+                      dataType="wstr"
+                      length="50"
+                      name="RelationshipSatisfaction" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[StandardHours]"
+                      dataType="wstr"
+                      length="50"
+                      name="StandardHours" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[StockOptionLevel]"
+                      dataType="wstr"
+                      length="50"
+                      name="StockOptionLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[TotalWorkingYears]"
+                      dataType="wstr"
+                      length="50"
+                      name="TotalWorkingYears" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[TrainingTimesLastYear]"
+                      dataType="wstr"
+                      length="50"
+                      name="TrainingTimesLastYear" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[WorkLifeBalance]"
+                      dataType="wstr"
+                      length="50"
+                      name="WorkLifeBalance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsAtCompany]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsAtCompany" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsInCurrentRole]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsInCurrentRole" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsSinceLastPromotion]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsSinceLastPromotion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input].ExternalColumns[YearsWithCurrManager]"
+                      dataType="wstr"
+                      length="50"
+                      name="YearsWithCurrManager" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\HR_Emp_Data Tabel.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\HR_Emp_Data Tabel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\HR_Emp_Data Tabel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\HR_Emp_Data Tabel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\HR_Emp_Data Tabel.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Copy HR_Data CSV.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="95.8333280972311,86.6666660639975" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Data Flow Task\Copy HR_Data CSV"
+          TopLeft="115.833327004479,99.6666659735971" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Data Flow Task\HR_Emp_Data Tabel"
+          TopLeft="314.166649501358,210.599998535514" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="201.833327004479,141.266665973597">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="200.733322496879,69.3333325619168"
+              Start="0,0"
+              End="200.733322496879,61.8333325619168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.6666662809584" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.6666662809584"
+                    Point2="0,34.6666662809584"
+                    Point3="4,34.6666662809584" />
+                  <mssgle:LineSegment
+                    End="196.733322496879,34.6666662809584" />
+                  <mssgle:CubicBezierSegment
+                    Point1="196.733322496879,34.6666662809584"
+                    Point2="200.733322496879,34.6666662809584"
+                    Point3="200.733322496879,38.6666662809584" />
+                  <mssgle:LineSegment
+                    End="200.733322496879,61.8333325619168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\HR_Emp_Data Tabel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
