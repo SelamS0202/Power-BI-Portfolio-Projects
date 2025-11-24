@@ -1,0 +1,19 @@
+let
+    Source = Sql.Databases("SELAMPC\SQLEXPRESS"),
+    Clinic_Data = Source{[Name="Clinic_Data"]}[Data],
+    dbo_VW_Clinic_Cleaned_Data = Clinic_Data{[Schema="dbo",Item="VW_Clinic_Cleaned_Data"]}[Data],
+    #"Changed Type" = Table.TransformColumnTypes(dbo_VW_Clinic_Cleaned_Data,{{"Encounter_Id", type text}, {"Provider_Id", type text}, {"Visit_Date_YYYYMMDD", type date}, {"Visit_End_YYYYMMDD", type date}, {"Visit_Duration_Minutes", Int64.Type}, {"Visit_Type", type text}, {"Visit_Type_Description", type text}, {"Visit_Cost", type number}, {"Patient_Id", type text}, {"Patient_First_Name", type text}, {"Patient_Last_Name", type text}, {"Patient_Marital_Status", type text}, {"Patient_Gender", type text}, {"Patient_City", type text}, {"Patient_State", type text}, {"Doctor_Id", type text}, {"Doctor_Full_Name", type text}, {"Doctor_Gender", type text}, {"Doctor_Speciality", type text}, {"Doctor_City", type text}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Visit_Date_YYYYMMDD", "Visit_Date_DDMMYYYY"}, {"Visit_End_YYYYMMDD", "Visit_End_DDMMYYYY"}}),
+    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Visit_Date_YYYYMMDD", each Date.ToText([Visit_Date_DDMMYYYY], "yyyyMMdd")),
+    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Visit_End_YYYYMMDD", each Date.ToText([Visit_End_DDMMYYYY], "yyyyMMdd")),
+    #"Added Custom2" = Table.AddColumn(#"Added Custom1", "Visit_Year", each Date.Year([Visit_Date_DDMMYYYY])),
+    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "Visit_Month", each Date.Month([Visit_Date_DDMMYYYY])),
+    #"Added Custom4" = Table.AddColumn(#"Added Custom3", "Visit_Month_Name", each Date.ToText([Visit_Date_DDMMYYYY], "MMM")),
+    #"Added Custom5" = Table.AddColumn(#"Added Custom4", "Visit_Duartion_Hours", each Number.Round([Visit_Duration_Minutes]/60,2)),
+    #"Added Custom6" = Table.AddColumn(#"Added Custom5", "Visit_Weekday", each Date.ToText([Visit_Date_DDMMYYYY],"ddd")),
+    #"Added Custom7" = Table.AddColumn(#"Added Custom6", "Weekday_Sort", each Date.DayOfWeek([Visit_Date_DDMMYYYY],Day.Monday)+1),
+    #"Added Custom8" = Table.AddColumn(#"Added Custom7", "Patient_Full_Name", each Text.Proper([Patient_First_Name] & " " & [Patient_Last_Name])),
+    #"Replaced Value" = Table.ReplaceValue(#"Added Custom8",null,0,Replacer.ReplaceValue,{"Visit_Cost"}),
+    #"Removed Duplicates" = Table.Distinct(#"Replaced Value", {"Encounter_Id"})
+in
+    #"Removed Duplicates"

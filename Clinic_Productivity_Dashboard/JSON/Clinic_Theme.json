@@ -1,0 +1,31 @@
+{
+  "name": "Clinic Productivity Theme",
+  "dataColors": ["#0B3D91", "#1ABC9C", "#F39C12", "#7F8C8D", "#34495E", "#95A5A6"],
+  "background": "#FFFFFF",
+  "foreground": "#0B3D91",
+  "tableAccent": "#1ABC9C",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "color": [{"solid": {"color": "#0B3D91"}}],
+        "fontFamily": [{"value": "Segoe UI"}],
+        "fontSize": [{"value": 12}]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [{"solid": {"color": "#F2F2F2"}}],
+        "border": [{"show": true, "color": {"solid": {"color": "#0B3D91"}}}],
+        "borderRadius": [{"value": 10}],
+        "titleText": {"color": [{"solid": {"color": "#0B3D91"}}]}
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [{"solid": {"color": "#FFFFFF"}}],
+        "border": [{"show": true, "color": {"solid": {"color": "#1ABC9C"}}}],
+        "borderRadius": [{"value": 8}]
+      }
+    }
+  }
+}
