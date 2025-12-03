@@ -1,7 +1,7 @@
 Create view VW_Clinic_Cleaned_Data as 
 with CTE_Drop_Unnecessary_Columns  as (
 --1) Drop unnecessary columns  and Rename column names
-	SELECT TOP (1000) [E_Id] as Encounter_Id
+	SELECT [E_Id] as Encounter_Id
 		  ,[E_Start] as Visit_Date
 		  ,[E_Stop] as Visit_End
 		  ,[E_Provider] as Provider_Id
@@ -64,3 +64,4 @@ FROM CTE_Drop_Unnecessary_Columns
 )
 SELECT *
 FROM Normalize_columns
+
